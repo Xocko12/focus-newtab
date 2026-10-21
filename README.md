@@ -11,7 +11,7 @@ Focus New Tab never navigates the tab. It displays your page inside its own new-
 ## Features
 
 - Your chosen page on every new tab, with the cursor in the address bar.
-- Sites that refuse to be displayed inside another page are allowed to load, only on the new-tab page.
+- Sites that refuse to be displayed inside another page are allowed to load, but only your chosen page itself. Ads and embeds inside it keep their normal protection.
 - Clicking a link or submitting a search on the page opens it in the tab normally, so the address bar shows the real URL and Back works.
 
 ## Install
@@ -21,6 +21,33 @@ Focus New Tab never navigates the tab. It displays your page inside its own new-
    - **Temporary:** `about:debugging#/runtime/this-firefox` → **Load Temporary Add-on…** → select `manifest.json`. Removed when Firefox restarts.
    - **Permanent:** sign it for free (unlisted) via the [Firefox Add-on Developer Hub](https://addons.mozilla.org/developers/) and install the signed `.xpi`.
 3. Open a new tab, choose **Keep** when Firefox asks about the new-tab change, then click **Choose a page** and enter your URL. You can change it later under Add-ons → Focus New Tab → Options.
+
+## How to use
+
+### Set your page
+
+1. Open a new tab and click **Choose a page**, or go to `about:addons` → **Focus New Tab** → **Options**.
+2. Type the address of the page you want, e.g. `www.example.com`. You can leave out `https://`; it's added for you.
+3. Click **Save** or press **Enter**.
+
+### Search from a new tab
+
+1. Press **Ctrl+T** (**⌘T** on Mac) or click **+**.
+2. Start typing straight away. The cursor is already in the address bar, and your page appears behind it.
+3. Press **Enter** to search or go to the address you typed. Your text stays exactly as you typed it, even if the page is still loading.
+
+### Use the page itself
+
+- Click anywhere on the page to use it as normal.
+- **Clicking a link** opens it in the current tab, so the address bar shows the real URL and **Back** returns you to your new-tab page.
+- **Ctrl+click**, **middle-click**, or links that normally open in a new tab still open in a new tab.
+- **Searching on the page** (e.g. a search box on your chosen site) also opens the results in the tab.
+
+### Change or remove your page
+
+- To change it, go to `about:addons` → **Focus New Tab** → **Options**, enter a new address and save.
+- To remove it, clear the field and save. New tabs will then show the **Choose a page** button.
+- To go back to Firefox's normal new tab, disable or remove the extension in `about:addons`.
 
 ## Build
 

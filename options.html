@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root { color-scheme: light dark; }
+    body { font: 14px system-ui, sans-serif; margin: 16px; }
+    label { display: block; margin-bottom: 6px; font-weight: 600; }
+    .row { display: flex; gap: 8px; }
+    input { flex: 1; padding: 6px 8px; font: inherit; }
+    button { padding: 6px 14px; font: inherit; }
+    #status { margin-top: 8px; min-height: 1.2em; }
+    p { color: GrayText; }
+  </style>
+</head>
+<body>
+  <label for="url">Page to show on every new tab</label>
+  <div class="row">
+    <input id="url" type="text" placeholder="https://www.example.com" spellcheck="false">
+    <button id="save">Save</button>
+  </div>
+  <div id="status"></div>
+  <p>The address bar stays empty and focused on new tabs, so you can type a search straight away.</p>
+  <script src="options.js"></script>
+</body>
+</html>

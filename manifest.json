@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Focus New Tab",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Shows a page of your choice on every new tab while keeping the address bar empty and focused, so you can type a search right away.",
   "browser_specific_settings": {
     "gecko": {

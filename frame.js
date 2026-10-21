@@ -15,6 +15,7 @@
     document.addEventListener(
       "click",
       e => {
+        if (!e.isTrusted) return; // only real clicks, not ones faked by the page's scripts
         if (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
         const a = e.target && e.target.closest && e.target.closest("a[href]");
         if (!a) return;
@@ -35,6 +36,8 @@
     // Plain GET search forms (only if the site didn't handle the submit itself)
     window.addEventListener("submit", e => {
       if (e.defaultPrevented) return;
+      // only searches you actually submitted (click or Enter), not ones triggered by the page's scripts
+      if (!e.isTrusted || !(navigator.userActivation && navigator.userActivation.isActive)) return;
       const form = e.target;
       if (!(form instanceof HTMLFormElement)) return;
       if ((form.method || "get").toLowerCase() !== "get") return;

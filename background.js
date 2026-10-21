@@ -1,19 +1,25 @@
 "use strict";
 
-const BASE = browser.runtime.getURL("");
 const NEWTAB = browser.runtime.getURL("newtab.html");
 
-// Is this request a frame loaded (directly or nested) inside our new tab page?
-function insideOurNewTab(details) {
-  if (details.documentUrl && details.documentUrl.startsWith(BASE)) return true;
-  return (details.frameAncestors || []).some(a => a.url && a.url.startsWith(BASE));
+// Is this request the page shown directly in our new tab page?
+// Only the frame whose parent is the new tab page itself counts. Frames
+// nested deeper (ads, embeds inside your chosen site) keep their normal
+// protection against being framed, so they can't be used for clickjacking.
+function isOurNewTabFrame(details) {
+  if (details.parentFrameId !== 0) return false;
+  const ancestors = details.frameAncestors || [];
+  if (ancestors.length > 0) {
+    return ancestors.length === 1 && !!ancestors[0].url && ancestors[0].url.startsWith(NEWTAB);
+  }
+  return !!details.documentUrl && details.documentUrl.startsWith(NEWTAB);
 }
 
 // Many sites forbid being shown inside a frame. Only for frames inside our
 // new tab page, drop those restrictions so the page can be displayed.
 browser.webRequest.onHeadersReceived.addListener(
   details => {
-    if (!insideOurNewTab(details)) return;
+    if (!isOurNewTabFrame(details)) return;
 
     const out = [];
     for (const h of details.responseHeaders) {

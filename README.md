@@ -2,6 +2,8 @@
 
 A Firefox extension that shows a page of your choice on every new tab while keeping the address bar **empty and focused**, so you can start typing a search immediately.
 
+**[Get it on Firefox Add-ons](https://addons.mozilla.org/firefox/addon/focus-new-tab/)**
+
 ## Why
 
 Extensions like New Tab Override load your URL by navigating the tab. When the page finishes loading, Firefox writes that URL into the address bar, on top of whatever you were already typing (e.g. `football matchhttps://www...`).
@@ -17,9 +19,8 @@ Focus New Tab never navigates the tab. It displays your page inside its own new-
 ## Install
 
 1. Disable any other new-tab extension (e.g. New Tab Override).
-2. Install the extension:
-   - **Temporary:** `about:debugging#/runtime/this-firefox` → **Load Temporary Add-on…** → select `manifest.json`. Removed when Firefox restarts.
-   - **Permanent:** sign it for free (unlisted) via the [Firefox Add-on Developer Hub](https://addons.mozilla.org/developers/) and install the signed `.xpi`.
+2. Install the extension from **[Firefox Add-ons](https://addons.mozilla.org/firefox/addon/focus-new-tab/)** and click **Add to Firefox**.
+   - To try a version from this repository instead: `about:debugging#/runtime/this-firefox` → **Load Temporary Add-on…** → select `manifest.json`. It's removed when Firefox restarts.
 3. Open a new tab, choose **Keep** when Firefox asks about the new-tab change, then click **Choose a page** and enter your URL. You can change it later under Add-ons → Focus New Tab → Options.
 
 ## How to use
